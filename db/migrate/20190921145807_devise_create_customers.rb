@@ -3,6 +3,12 @@
 class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
   def change
     create_table :customers do |t|
+      # Our Custom Fields
+      t.string :username,              null: false, default: ""
+      t.string :name,              null: false, default: ""
+      t.string :city,              null: false, default: ""
+      t.string :phone,              null: false, default: ""
+
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
@@ -40,5 +46,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
     add_index :customers, :reset_password_token, unique: true
     # add_index :customers, :confirmation_token,   unique: true
     # add_index :customers, :unlock_token,         unique: true
+    add_index :customers, :username,                unique: true
+    add_index :customers, :phone,                unique: true
   end
 end
