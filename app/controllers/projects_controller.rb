@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_action :authenticate_customer!
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   # GET /projects
@@ -27,7 +28,7 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
 
     respond_to do |format|
-      if @project.save
+      if @project.update(customer_id: current_customer.id)
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
         format.json { render :show, status: :created, location: @project }
       else
@@ -64,7 +65,7 @@ class ProjectsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project
-      @project = Project.find(params[:id])
+      @project = current_customer.projects.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
