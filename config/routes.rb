@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :projects
   devise_for :customers, controllers: { registrations: 'customers/registrations',
                                      sessions: 'customers/sessions', unlocks: 'customers/unlocks',
                                      passwords: 'customers/passwords', confirmations: 'customers/confirmations'}
