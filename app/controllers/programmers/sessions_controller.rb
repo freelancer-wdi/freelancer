@@ -22,7 +22,7 @@ class Programmers::SessionsController < Devise::SessionsController
   # The path used after sign in.
   def after_sign_in_path_for(resource)
     super(resource)
-    redirect_to portfolio_path(current_programmer.id)
+    '/portfolios'
   end
 
   # If you have extra params to permit, append them to the sanitizer.
