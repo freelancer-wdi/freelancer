@@ -1,8 +1,2 @@
-<% if not customer_signed_in? and not programmer_signed_in?%>
-    <h3>Customer:<%= render 'customers/nav'%></h3>
-    <h3>Programmer:<%= render 'programmers/nav'%></h3>
-<%elsif customer_signed_in?%>
-    <% redirect_to project_path%>
-<%else%>
-    <% redirect_to portfolio_path(current_programmer.id)%>
-<%end%>
+<h3>Customer:<%= render 'customers/nav'%></h3>
+<h3>Programmer:<%= render 'programmers/nav'%></h3>
