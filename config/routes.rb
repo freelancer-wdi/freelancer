@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :portfolios
+  resources :portfolios, only: [:show, :edit, :update]
   devise_for :programmers, controllers: { registrations: 'programmers/registrations',
                                           sessions: 'programmers/sessions', unlocks: 'programmers/unlocks',
                                           passwords: 'programmers/passwords', confirmations: 'programmers/confirmations'}
