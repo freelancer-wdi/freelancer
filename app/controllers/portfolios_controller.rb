@@ -1,11 +1,12 @@
 class PortfoliosController < ApplicationController
+  before_action :authenticate_programmer!
   before_action :set_portfolio, only: [:show, :edit, :update, :destroy]
 
   # GET /portfolios
   # GET /portfolios.json
-  def index
-    @portfolios = Portfolio.all
-  end
+  # def index
+  #   @portfolios = Portfolio.all
+  # end
 
   # GET /portfolios/1
   # GET /portfolios/1.json
@@ -13,9 +14,9 @@ class PortfoliosController < ApplicationController
   end
 
   # GET /portfolios/new
-  def new
-    @portfolio = Portfolio.new
-  end
+  # def new
+  #   @portfolio = Portfolio.new
+  # end
 
   # GET /portfolios/1/edit
   def edit
@@ -23,19 +24,19 @@ class PortfoliosController < ApplicationController
 
   # POST /portfolios
   # POST /portfolios.json
-  def create
-    @portfolio = Portfolio.new(portfolio_params)
+  # def create
+  #   @portfolio = Portfolio.new(portfolio_params)
 
-    respond_to do |format|
-      if @portfolio.save
-        format.html { redirect_to @portfolio, notice: 'Portfolio was successfully created.' }
-        format.json { render :show, status: :created, location: @portfolio }
-      else
-        format.html { render :new }
-        format.json { render json: @portfolio.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  #   respond_to do |format|
+  #     if @portfolio.save
+  #       format.html { redirect_to @portfolio, notice: 'Portfolio was successfully created.' }
+  #       format.json { render :show, status: :created, location: @portfolio }
+  #     else
+  #       format.html { render :new }
+  #       format.json { render json: @portfolio.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # PATCH/PUT /portfolios/1
   # PATCH/PUT /portfolios/1.json
@@ -53,18 +54,18 @@ class PortfoliosController < ApplicationController
 
   # DELETE /portfolios/1
   # DELETE /portfolios/1.json
-  def destroy
-    @portfolio.destroy
-    respond_to do |format|
-      format.html { redirect_to portfolios_url, notice: 'Portfolio was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+  # def destroy
+  #   @portfolio.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to portfolios_url, notice: 'Portfolio was successfully destroyed.' }
+  #     format.json { head :no_content }
+  #   end
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_portfolio
-      @portfolio = Portfolio.find(params[:id])
+      @portfolio = current_programmer.portfolios.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
