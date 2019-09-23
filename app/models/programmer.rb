@@ -4,4 +4,6 @@ class Programmer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_one :portfolio, :dependent => :destroy
+  before_create :build_portfolio
+  accepts_nested_attributes_for :portfolio
 end
