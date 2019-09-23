@@ -10,7 +10,11 @@
   </head>
 
   <body>
-    <%= render 'customers/nav'%>
+    <% if customer_signed_in? %>
+      <h3>Customer:<%= render 'customers/nav'%></h3>
+    <% elsif programmer_signed_in? %>
+      <h3>Programmer:<%= render 'programmers/nav'%></h3>
+    <%end%>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
