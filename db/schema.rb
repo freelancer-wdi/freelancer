@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_23_090539) do
+ActiveRecord::Schema.define(version: 2019_09_23_091314) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 2019_09_23_090539) do
     t.string "cv"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "programmer_id"
+    t.index ["programmer_id"], name: "index_portfolios_on_programmer_id"
   end
 
   create_table "programmers", force: :cascade do |t|
@@ -73,5 +75,6 @@ ActiveRecord::Schema.define(version: 2019_09_23_090539) do
     t.index ["name"], name: "index_projects_on_name", unique: true
   end
 
+  add_foreign_key "portfolios", "programmers"
   add_foreign_key "projects", "customers"
 end
