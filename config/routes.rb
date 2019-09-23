@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :programmers
+  devise_for :programmers, controllers: { registrations: 'programmers/registrations',
+                                          sessions: 'programmers/sessions', unlocks: 'programmers/unlocks',
+              passwords: 'programmers/passwords', confirmations: 'programmers/confirmations'}
   root "projects#index"
   resources :projects
   devise_for :customers, controllers: { registrations: 'customers/registrations',
