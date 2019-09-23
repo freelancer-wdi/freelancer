@@ -1,17 +1,17 @@
 class PortfoliosController < ApplicationController
   before_action :authenticate_programmer!
-  before_action :set_portfolio, only: [:show, :edit, :update, :destroy]
+  before_action :set_portfolio, only: [:index, :edit, :update]
 
   # GET /portfolios
   # GET /portfolios.json
-  # def index
-  #   @portfolios = Portfolio.all
-  # end
+  def index
+    # @portfolios = Portfolio.all
+  end
 
   # GET /portfolios/1
   # GET /portfolios/1.json
-  def show
-  end
+  # def show
+  # end
 
   # GET /portfolios/new
   # def new
@@ -43,8 +43,8 @@ class PortfoliosController < ApplicationController
   def update
     respond_to do |format|
       if @portfolio.update(portfolio_params)
-        format.html { redirect_to @portfolio, notice: 'Portfolio was successfully updated.' }
-        format.json { render :show, status: :ok, location: @portfolio }
+        format.html { redirect_to portfolios_path, notice: 'Portfolio was successfully updated.' }
+        format.json { render :index, status: :ok, location: @portfolio }
       else
         format.html { render :edit }
         format.json { render json: @portfolio.errors, status: :unprocessable_entity }
@@ -65,7 +65,7 @@ class PortfoliosController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_portfolio
-      @portfolio = current_programmer.portfolios.find(params[:id])
+      @portfolio = current_programmer.portfolio
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
