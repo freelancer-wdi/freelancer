@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @portfolio.image %>
+</p>
+
+<p>
+  <strong>Is employed:</strong>
+  <%= @portfolio.is_employed %>
+</p>
+
+<p>
+  <strong>About:</strong>
+  <%= @portfolio.about %>
+</p>
+
+<p>
+  <strong>Cv:</strong>
+  <%= @portfolio.cv %>
+</p>
+
+<%= link_to 'Edit', edit_portfolio_path(@portfolio) %> |
+<%= link_to 'Back', portfolios_path %>
