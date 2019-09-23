@@ -53,13 +53,13 @@ class Programmers::RegistrationsController < Devise::RegistrationsController
   # The path used after sign up.
   def after_sign_up_path_for(resource)
     super(resource)
-    redirect_to portfolio_path(current_programmer.id)
+    '/portfolios'
   end
 
   # The path used after update.
   def after_update_path_for(resource)
     super(resource)
-    redirect_to portfolio_path(current_programmer.id)
+    '/portfolios'
   end
 
   # The path used after sign up for inactive accounts.
