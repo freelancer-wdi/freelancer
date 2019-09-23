@@ -3,6 +3,11 @@
 class DeviseCreateProgrammers < ActiveRecord::Migration[5.2]
   def change
     create_table :programmers do |t|
+      ## Our Custom Fields
+      t.string :username,              null: false, default: ""
+      t.string :name,              null: false, default: ""
+      t.string :city,              null: false, default: ""
+      t.string :phone,              null: false, default: ""
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
