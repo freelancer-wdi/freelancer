@@ -45,5 +45,7 @@ class DeviseCreateProgrammers < ActiveRecord::Migration[5.2]
     add_index :programmers, :reset_password_token, unique: true
     # add_index :programmers, :confirmation_token,   unique: true
     # add_index :programmers, :unlock_token,         unique: true
+    add_index :programmers, :username,                unique: true
+    add_index :programmers, :phone,                unique: true
   end
 end
