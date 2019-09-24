@@ -6,4 +6,7 @@ class Programmer < ApplicationRecord
   has_one :portfolio, :dependent => :destroy
   before_create :build_portfolio
   accepts_nested_attributes_for :portfolio
+
+  has_many :offers
+  has_many :projects, through: :offers
 end
