@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_24_224900) do
+ActiveRecord::Schema.define(version: 2019_09_24_225812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,10 @@ ActiveRecord::Schema.define(version: 2019_09_24_224900) do
     t.decimal "budget"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "programmer_id"
+    t.bigint "project_id"
+    t.index ["programmer_id"], name: "index_offers_on_programmer_id"
+    t.index ["project_id"], name: "index_offers_on_project_id"
   end
 
   create_table "portfolios", force: :cascade do |t|
@@ -83,6 +87,8 @@ ActiveRecord::Schema.define(version: 2019_09_24_224900) do
     t.index ["name"], name: "index_projects_on_name", unique: true
   end
 
+  add_foreign_key "offers", "programmers"
+  add_foreign_key "offers", "projects"
   add_foreign_key "portfolios", "programmers"
   add_foreign_key "projects", "customers"
 end
