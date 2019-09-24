@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :offers
   resources :portfolios, only: [:index, :edit, :update]
   devise_for :programmers, controllers: { registrations: 'programmers/registrations',
                                           sessions: 'programmers/sessions', unlocks: 'programmers/unlocks',
