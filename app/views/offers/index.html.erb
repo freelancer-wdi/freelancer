@@ -1,26 +1,62 @@
 <p id="notice"><%= notice %></p>
+<button onclick="toggleOne()">Offers</button> |
+<button onclick="toggleTwo()">Projects</button>
+<div id="offers">
+  <h1>Offers</h1>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th>Time</th>
+          <th>Budget</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-<h1>Offers</h1>
+      <tbody>
+        <% @offers.each do |offer| %>
+          <tr>
+            <td><%= offer.description %></td>
+            <td><%= offer.time %></td>
+            <td><%= offer.budget %></td>
+            <td><%= link_to 'Show', offer %></td>
+            <td><%= link_to 'Edit', edit_offer_path(offer) %></td>
+            <td><%= link_to 'Destroy', offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>
+
+
+
+<div id="projects" style="display:none;">
+<p id="notice"><%= notice %></p>
+
+<h1>Projects</h1>
 
 <table>
   <thead>
     <tr>
+      <th>Name</th>
+      <th>Status</th>
       <th>Description</th>
-      <th>Time</th>
+      <th>Requirements</th>
       <th>Budget</th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @offers.each do |offer| %>
+    <% @projects.each do |project| %>
       <tr>
-        <td><%= offer.description %></td>
-        <td><%= offer.time %></td>
-        <td><%= offer.budget %></td>
-        <td><%= link_to 'Show', offer %></td>
-        <td><%= link_to 'Edit', edit_offer_path(offer) %></td>
-        <td><%= link_to 'Destroy', offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= project.name %></td>
+        <td><%= project.status %></td>
+        <td><%= project.description %></td>
+        <td><%= project.requirements %></td>
+        <td><%= project.budget %></td>
+        <td><%= link_to 'Create Offer', new_offer_path(project) %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +64,15 @@
 
 <br>
 
-<%= link_to 'New Offer', new_offer_path %>
+</div>
+<script>
+function toggleOne(){
+  document.getElementById("projects").style.display = "none"
+  document.getElementById("offers").style.display = ""
+  
+}
+function toggleTwo(){
+  document.getElementById("offers").style.display = "none"
+  document.getElementById("projects").style.display = ""
+}
+</script>
