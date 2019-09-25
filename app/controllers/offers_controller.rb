@@ -1,10 +1,12 @@
 class OffersController < ApplicationController
+  before_action :authenticate_programmer!
   before_action :set_offer, only: [:show, :edit, :update, :destroy]
 
   # GET /offers
   # GET /offers.json
   def index
-    @offers = Offer.all
+    @offers = current_programmer.offers
+    @projects = Project.all
   end
 
   # GET /offers/1
@@ -15,6 +17,7 @@ class OffersController < ApplicationController
   # GET /offers/new
   def new
     @offer = Offer.new
+    @project = Project.find(params[:id])
   end
 
   # GET /offers/1/edit
@@ -25,9 +28,8 @@ class OffersController < ApplicationController
   # POST /offers.json
   def create
     @offer = Offer.new(offer_params)
-
     respond_to do |format|
-      if @offer.save
+      if @offer.update(programmer_id: current_programmer.id)
         format.html { redirect_to @offer, notice: 'Offer was successfully created.' }
         format.json { render :show, status: :created, location: @offer }
       else
@@ -64,11 +66,11 @@ class OffersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_offer
-      @offer = Offer.find(params[:id])
+      @offer = current_programmer.offers.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def offer_params
-      params.require(:offer).permit(:description, :time, :budget)
+      params.require(:offer).permit(:description, :time, :budget, :project_id)
     end
 end
