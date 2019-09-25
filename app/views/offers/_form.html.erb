@@ -11,6 +11,8 @@
     </div>
   <% end %>
 
+  <%= form.hidden_field :project_id, value: params[:id] %>
+
   <div class="field">
     <%= form.label :description %>
     <%= form.text_area :description %>
@@ -25,6 +27,8 @@
     <%= form.label :budget %>
     <%= form.text_field :budget %>
   </div>
+
+  
 
   <div class="actions">
     <%= form.submit %>
