@@ -27,3 +27,24 @@
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
+
+<hr/>
+<h3>Offers</h3>
+<br/>
+<% @project.offers.each do |offer| %>
+  <strong>Description:</strong>
+  <%= offer.description %>
+  <br/>
+
+  <strong>Time:</strong>
+  <%= offer.time %>
+  <br/>
+  <strong>Budget:</strong>
+  <%= offer.budget %>
+  <br/>
+  <br/>
+  <% if @is_accepted == false %>
+  <%= link_to 'Accepted', offer_accepted_path(@project,offer), data: { confirm: "Are you sure?\nNote: All the other offers for this project will be deleted and your project will not appear to programmers" }%>
+  <%end%>
+  <hr/>
+<% end %>
