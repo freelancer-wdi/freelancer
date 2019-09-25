@@ -1,5 +1,33 @@
 <p id="notice"><%= notice %></p>
 
+<h3>Project</h3>
+  <p>
+  <strong>Name:</strong>
+  <%= @offer.project.name %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @offer.project.status %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @offer.project.description %>
+</p>
+
+<p>
+  <strong>Requirements:</strong>
+  <%=  @offer.project.requirements %>
+</p>
+
+<p>
+  <strong>Budget:</strong>
+  <%=  @offer.project.budget %>
+</p>
+
+<hr/>
+<h3>Offer</h3>
 <p>
   <strong>Description:</strong>
   <%= @offer.description %>
