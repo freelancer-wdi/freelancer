@@ -1,5 +1,30 @@
-<h1>New Offer</h1>
+<h1>Project</h1>
+<p>
+  <strong>Name:</strong>
+  <%= @project.name %>
+</p>
 
+<p>
+  <strong>Status:</strong>
+  <%= @project.status %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @project.description %>
+</p>
+
+<p>
+  <strong>Requirements:</strong>
+  <%= @project.requirements %>
+</p>
+
+<p>
+  <strong>Budget:</strong>
+  <%= @project.budget %>
+</p>
+<hr/>
+<h1>New Offer</h1>
 <%= render 'form', offer: @offer %>
 
 <%= link_to 'Back', offers_path %>
