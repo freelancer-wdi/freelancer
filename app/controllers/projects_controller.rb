@@ -11,6 +11,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
+    @is_accepted = @project.offers.any?{ |offer| offer.is_accepted == true}
   end
 
   # GET /projects/new
@@ -60,6 +61,12 @@ class ProjectsController < ApplicationController
       format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def offer_accepted
+    Offer.where.not(id: params[:offer_id]).destroy_all
+    Offer.where(id: params[:offer_id]).update(is_accepted: true)
+    redirect_to project_path(params[:id])
   end
 
   private
