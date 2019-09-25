@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get '/offers/new/:id', to: 'offers#new', as: 'new_offer'
+  get 'projects/:id/:offer_id/accepted', to: 'projects#offer_accepted', as:'offer_accepted'
   resources :offers, except: :new
   resources :portfolios, only: [:index, :edit, :update]
   devise_for :programmers, controllers: { registrations: 'programmers/registrations',
