@@ -30,7 +30,6 @@
 
 <hr/>
 <h3>Offers</h3>
-<br/>
 <% @project.offers.each do |offer| %>
   <strong>Description:</strong>
   <%= offer.description %>
@@ -42,10 +41,11 @@
   <strong>Budget:</strong>
   <%= offer.budget %>
   <br/>
-  <br/>
   <% if @is_accepted == false %>
   <%= link_to 'Accepted', offer_accepted_path(@project,offer), data: { confirm: "Are you sure?\nNote: All the other offers for this project will be deleted and your project will not appear to programmers" }%>
   <%end%>
+  <br/>
+  <br/>
   <% end %>
   <br/>
   <hr/>
