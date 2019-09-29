@@ -46,5 +46,17 @@
   <% if @is_accepted == false %>
   <%= link_to 'Accepted', offer_accepted_path(@project,offer), data: { confirm: "Are you sure?\nNote: All the other offers for this project will be deleted and your project will not appear to programmers" }%>
   <%end%>
+  <% end %>
+  <br/>
   <hr/>
-<% end %>
+  <% if @project.status == "underway"%>
+    <strong>This Project is:</strong>
+    <%= @project.status.upcase %> |
+    <%= link_to 'CHANGE TO COMPLETED', status_update_path(@project), data: { confirm: "You want to change the status of project to COMPLETED\nAre you sure?"} %>
+    <hr/>
+  <%elsif @project.status == "completed"%>
+    <strong>This Project is:</strong>
+    <%= @project.status.upcase %> |
+    <%= link_to 'CHANGE TO UNDERWAY', status_update_path(@project), data: { confirm: "You want to change the status of project to UNDERWAY\nAre you sure?"} %> 
+    <hr/>
+  <% end %>
