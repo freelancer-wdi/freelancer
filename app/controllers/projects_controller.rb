@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_customer!
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :offer_accepted, :update_status]
 
   # GET /projects
   # GET /projects.json
@@ -64,8 +64,22 @@ class ProjectsController < ApplicationController
   end
 
   def offer_accepted
-    Offer.where.not(id: params[:offer_id]).destroy_all
-    Offer.where(id: params[:offer_id]).update(is_accepted: true)
+    if Offer.where.not(id: params[:offer_id]).destroy_all
+      if Offer.where(id: params[:offer_id]).update(is_accepted: true)
+        if  @project.update(status: "underway")
+          redirect_to project_path(params[:id])
+        end
+      end
+    end
+  end
+
+  def update_status
+    if @project.status == "underway"
+      @project.status = "completed"
+    else
+      @project.status = "underway"
+    end
+    @project.save()
     redirect_to project_path(params[:id])
   end
 
