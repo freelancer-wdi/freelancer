@@ -1,16 +1,26 @@
-<h2>Forgot your password?</h2>
+
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="container-login100">
+			<div class="wrap-login100"> 
+				<div class="login100-form ">
+        
+					<span class="login100-form-title ">	Forgot your password?</span> <br/> 
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+        <div class="wrap-input100">
+          <%= f.label :email , class:"label-input100" ,placeholder:"Email"%><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input100" %>
+        </div>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
+        <div class="container-login100-form-btn">
+          <%= f.submit "Send me reset password instructions", class:"login100-form-btn" %>
+        </div>
+          <%= render "programmers/shared/links" %>
+       </div>
+        <%= image_tag("/assets/1.png", :alt => "sign_up_in_img" , class:"login100-more") %>
+      </div>          
+   </div>
 <% end %>
 
-<%= render "programmers/shared/links" %>
+

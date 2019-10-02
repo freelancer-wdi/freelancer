@@ -1,26 +1,41 @@
-<h2>Log in</h2>
+
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="container-login100">
+			<div class="wrap-login100"> 
+				<div class="login100-form ">
+        
+					<span class="login100-form-title ">	Login</span> <br/> 
+
+
+            <div class="wrap-input100">
+              <%= f.label :email, class:"label-input100" ,placeholder:"Email" %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input100" %>
+            </div>
+
+            <div class="wrap-input100">
+              <%= f.label :password, class:"label-input100" ,placeholder:"Password" %><br />
+              <%= f.password_field :password, autocomplete: "current-password", class:"input100" %>
+            </div>
+
+            <% if devise_mapping.rememberable? %>
+              <div class="flex-sb-m w-full p-t-3 p-b-32">
+                 <div class="contact100-form-checkbox"> 
+                    <%= f.check_box :remember_me,  class:"input-checkbox100", id:"ckb1" %>
+                    <%= f.label :remember_me, class:"label-checkbox100" ,for:"ckb1" %><br/>
+                 </div>
+              </div>
+            <% end %>
+
+            <div class="container-login100-form-btn">
+              <%= f.submit "Log in", class:"login100-form-btn" %>
+            </div>
+            <%= render "programmers/shared/links" %>
+      </div>
+        <%= image_tag("/assets/1.png", :alt => "sign_up_in_img" , class:"login100-more") %>
+      </div>          
   </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
 <% end %>
 
-<%= render "programmers/shared/links" %>
+
