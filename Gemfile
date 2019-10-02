@@ -64,3 +64,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Authentication
 # https://github.com/plataformatec/devise#getting-started
 gem 'devise'
+
+#jquery
+gem 'jquery-rails'
