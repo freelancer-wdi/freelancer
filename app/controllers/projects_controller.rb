@@ -64,8 +64,8 @@ class ProjectsController < ApplicationController
   end
 
   def offer_accepted
-    if Offer.where.not(id: params[:offer_id]).destroy_all
-      if Offer.where(id: params[:offer_id]).update(is_accepted: true)
+    if @project.offers.where.not(id: params[:offer_id]).destroy_all
+      if @project.offers.where(id: params[:offer_id]).update(is_accepted: true)
         if  @project.update(status: "underway")
           redirect_to project_path(params[:id])
         end
