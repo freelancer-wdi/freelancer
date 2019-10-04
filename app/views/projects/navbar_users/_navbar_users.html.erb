@@ -1,0 +1,54 @@
+<div class="page-wrapper chiller-theme toggled">
+  <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+    <i class="fas fa-bars"></i>
+  </a>
+  <nav id="sidebar" class="sidebar-wrapper">
+    <div class="sidebar-content">
+      <div class="sidebar-brand">
+        <a href="#">FreeLancer</a>
+        <div id="close-sidebar">
+          <i class="fas fa-times"></i>
+        </div>
+      </div>
+      <div class="sidebar-header">
+        <div class="user-pic">
+          <img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
+            alt="User picture">
+        </div>
+        <div class="user-info">
+          <span class="user-name">
+             <% if customer_signed_in? %>
+                <%= current_customer.username %>
+             <%elsif programmer_signed_in? %>
+                 <%= current_programmer.username %>
+             <% end %>
+          </span>
+          <span class="user-role"></span>
+          <span class="user-status">
+            <i class="fa fa-circle"></i>
+            <span></span>
+          </span>
+        </div>
+      </div>
+     
+    
+      <div class="sidebar-menu">
+        <ul>
+          <li class="header-menu">
+            <span>
+                      <% if customer_signed_in? %>
+                        <h3><%= render 'customers/nav'%></h3>
+                        <% elsif programmer_signed_in? %>
+                        <h3><%= render 'programmers/nav'%></h3>
+                        <p class="notice"><%= notice %></p>
+                        <p class="alert"><%= alert %></p>
+                      <%end%>
+            </span>
+          </li>
+           <li class="header-menu">
+            <span></span>
+          </li>
+        </ul>
+      </div>
+    </nav>
+</div>

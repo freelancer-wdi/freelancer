@@ -1,62 +1,78 @@
-<p id="notice"><%= notice %></p>
+<%= render  'projects/navbar_users/navbar_users' %>
+<br/>
 
-<p>
-  <strong>Name:</strong>
-  <%= @project.name %>
-</p>
+   
 
-<p>
-  <strong>Status:</strong>
-  <%= @project.status %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @project.description %>
-</p>
+<div class="col-md-12 heading-section"  style="width: 80%; position: relative;
+  left: 20%; " >	
+     <p id="notice"><%= notice %></p>
+       
 
-<p>
-  <strong>Requirements:</strong>
-  <%= @project.requirements %>
-</p>
+              <div class="card  " style="width: 100%;">
+                    <div class="card-header ">
+                      Name : <%= @project.name %>
+                    </div>
 
-<p>
-  <strong>Budget:</strong>
-  <%= @project.budget %>
-</p>
+                    <div class="card-body">
+                      <h6 class="card-title">status : <%= @project.status %> </h6>
+                      <h6 class="card-title">requirements :  <%= @project.requirements %> </h6>
+                      <h6 class="card-title">budget :  <%= @project.budget %> </h6>
+                      <h6 class="card-text">description : <%= @project.description %> </h6> 
+                      
+ 
+                    </div>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+                    <div class="card-footer text-right">
+                       
+                        <div style="width:20%; position: relative; left: 80%;">
+                          <% if @project.status == "underway"%>
+                              <strong></strong>
+                              <% @project.status.upcase %> 
+                              <%= link_to 'COMPLETED', status_update_path(@project), data: { confirm: "You want to change the status of project to COMPLETED\nAre you sure?"},class:"login100-form-btn" %>
+                              
+                            <%elsif @project.status == "completed"%>
+                              <strong></strong>
+                              <% @project.status.upcase %> 
+                              <%= link_to 'UNDERWAY', status_update_path(@project), data: { confirm: "You want to change the status of project to UNDERWAY\nAre you sure?"},class:"login100-form-btn" %> 
+                              
+                          <% end %>
+                             
+                          </div>
+                        
+                        <div class="text-left">
+                            <%= link_to 'Edit', edit_project_path(@project) %> |
+                            <%= link_to 'Back', projects_path %>
+                        </div>
 
-<hr/>
-<h3>Offers</h3>
-<% @project.offers.each do |offer| %>
-  <strong>Description:</strong>
-  <%= offer.description %>
-  <br/>
+                     </div>
+                      
+               </div>
+               <br/>
+              
+      
+            <h3>Offers : </h3>
+             <hr/>
 
-  <strong>Time:</strong>
-  <%= offer.time %>
-  <br/>
-  <strong>Budget:</strong>
-  <%= offer.budget %>
-  <br/>
-  <% if @is_accepted == false %>
-  <%= link_to 'Accepted', offer_accepted_path(@project,offer), data: { confirm: "Are you sure?\nNote: All the other offers for this project will be deleted and your project will not appear to programmers" }%>
-  <%end%>
-  <br/>
-  <br/>
-  <% end %>
-  <br/>
-  <hr/>
-  <% if @project.status == "underway"%>
-    <strong>This Project is:</strong>
-    <%= @project.status.upcase %> |
-    <%= link_to 'CHANGE TO COMPLETED', status_update_path(@project), data: { confirm: "You want to change the status of project to COMPLETED\nAre you sure?"} %>
-    <hr/>
-  <%elsif @project.status == "completed"%>
-    <strong>This Project is:</strong>
-    <%= @project.status.upcase %> |
-    <%= link_to 'CHANGE TO UNDERWAY', status_update_path(@project), data: { confirm: "You want to change the status of project to UNDERWAY\nAre you sure?"} %> 
-    <hr/>
-  <% end %>
+           <div class="card-columns">
+            <% @project.offers.each do |offer| %>
+                  <div class="card  " >
+                      <div class=" card-body">
+                        <h5 class="card-title">prgrammer name: <%= offer.programmer.username%> </h4>
+                        <h6 class="card-title" >Time: <%= offer.time %> </h6>
+                        <h6 class="card-title" >Budget:  <%= offer.budget %> </h6>
+                        <h6 class="card-text" >Description: <%= offer.description %> </h6>
+                           <div style="max-width: 30%;  position: relative; left: 70%;">  
+                              <% if @is_accepted == false %>
+                                <%= link_to 'Accepted', offer_accepted_path(@project,offer), data: { confirm: "Are you sure?\nNote: All the other offers for this project will be deleted and your project will not appear to programmers" }, class:"login100-form-btn" %>
+                              <%end%>
+                          </div>
+                      </div>
+                      
+                   </div>
+                  
+            <% end %>
+             </div>
+</div>
+
+

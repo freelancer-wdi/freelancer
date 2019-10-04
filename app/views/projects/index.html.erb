@@ -1,35 +1,76 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Projects</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Status</th>
-      <th>Description</th>
-      <th>Requirements</th>
-      <th>Budget</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @projects.each do |project| %>
-      <tr>
-        <td><%= project.name %></td>
-        <td><%= project.status %></td>
-        <td><%= project.description %></td>
-        <td><%= project.requirements %></td>
-        <td><%= project.budget %></td>
-        <td><%= link_to 'Show', project %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+ <%= render  'projects/navbar_users/navbar_users' %>
 
-<br>
+ <div class="col-md-12 heading-section"  style="width: 80%; position: relative; left: 20%;" >	
+      <p id="notice"><%= notice %></p> 
+		            <h2 class=" ">Projects</h2>
+                
+                <div class="text-right ">
+                    <%= link_to 'New Project', new_project_path , class:" btn btn-primary " %> 
+                </div>
+		           <hr/>
 
-<%= link_to 'New Project', new_project_path %>
+                <% @projects.each do |project| %>
+
+                  <div class="card  " style="width: 100%;">
+                    <div class="card-header ">
+                      Name : <%= project.name %>
+                    </div>
+
+                    <div class="card-body">
+                      <h6 class="card-title">status : <%= project.status %> </h6>
+                      <h6 class="card-title">requirements :  <%= project.requirements %> </h6>
+                      <h6 class="card-title">budget :  <%= project.budget %> </h6>
+                      <h6 class="card-text">description : <%= project.description %> </h6> 
+                      <h6 colspan="3" ></h6>
+
+
+
+
+                        <!-- NO NEED ANY MORE -->
+                           <!-- <td><% project.name %></td>
+                            <td ><% project.status %></td>
+                            <td><% project.description %></td>
+                            <td><% project.requirements %></td>
+                            <td><% project.budget %></td>
+                            <td><% link_to 'Show', project %></td>
+                            <td><% link_to 'Edit', edit_project_path(project) %></td>
+                            <td><% link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+                        <!-- END -->
+
+                      
+                    </div>
+
+                    <div class="card-footer text-right">
+                        
+                       <%= link_to 'Show', project, class:"btn btn-primary" %>
+                        <%= link_to 'Edit', edit_project_path(project),class:"btn btn-primary"  %>
+                        <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } ,class:"btn btn-danger" %>
+                        
+                    </div>
+                    
+                   </div>
+                   <br/>
+                 <% end %>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+

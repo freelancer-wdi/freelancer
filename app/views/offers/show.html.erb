@@ -1,47 +1,54 @@
-<p id="notice"><%= notice %></p>
 
-<h3>Project</h3>
-  <p>
-  <strong>Name:</strong>
-  <%= @offer.project.name %>
-</p>
+ <%= render  'projects/navbar_users/navbar_users' %>
 
-<p>
-  <strong>Status:</strong>
-  <%= @offer.project.status %>
-</p>
+ <div class="col-md-12 heading-section"  style="width: 80%; position: relative; left: 20%;" >	
+      <p id="notice"><%= notice %></p> 
 
-<p>
-  <strong>Description:</strong>
-  <%= @offer.project.description %>
-</p>
+        <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Requirements:</strong>
-  <%=  @offer.project.requirements %>
-</p>
+        <h3>Project</h3>
+          <p>
+          <strong>Name:</strong>
+          <%= @offer.project.name %>
+        </p>
 
-<p>
-  <strong>Budget:</strong>
-  <%=  @offer.project.budget %>
-</p>
+        <p>
+          <strong>Status:</strong>
+          <%= @offer.project.status %>
+        </p>
 
-<hr/>
-<h3>Offer</h3>
-<p>
-  <strong>Description:</strong>
-  <%= @offer.description %>
-</p>
+        <p>
+          <strong>Description:</strong>
+          <%= @offer.project.description %>
+        </p>
 
-<p>
-  <strong>Time:</strong>
-  <%= @offer.time %>
-</p>
+        <p>
+          <strong>Requirements:</strong>
+          <%=  @offer.project.requirements %>
+        </p>
 
-<p>
-  <strong>Budget:</strong>
-  <%= @offer.budget %>
-</p>
+        <p>
+          <strong>Budget:</strong>
+          <%=  @offer.project.budget %>
+        </p>
 
-<%= link_to 'Edit', edit_offer_path(@offer) %> |
-<%= link_to 'Back', offers_path %>
+        <hr/>
+        <h3>Offer</h3>
+        <p>
+          <strong>Description:</strong>
+          <%= @offer.description %>
+        </p>
+
+        <p>
+          <strong>Time:</strong>
+          <%= @offer.time %>
+        </p>
+
+        <p>
+          <strong>Budget:</strong>
+          <%= @offer.budget %>
+        </p>
+
+        <%= link_to 'Edit', edit_offer_path(@offer) %> |
+        <%= link_to 'Back', offers_path %>
+</div>

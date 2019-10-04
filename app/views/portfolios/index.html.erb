@@ -1,25 +1,35 @@
-<p id="notice"><%= notice %></p>
+<%= render  'projects/navbar_users/navbar_users' %>
+<br/>
 
-<p>
-  <strong>Image:</strong>
-  <%= @portfolio.image %>
-</p>
+   
 
-<p>
-  <strong>Is employed:</strong>
-  <%= @portfolio.is_employed %>
-</p>
 
-<p>
-  <strong>About:</strong>
-  <%= @portfolio.about %>
-</p>
+<div class="col-md-12 heading-section"  style="width: 80%; position: relative;
+  left: 20%; " >
 
-<p>
-  <strong>Cv:</strong>
-  <%= @portfolio.cv %>
-</p>
+    <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_portfolio_path(@portfolio) %>
-|
-<%= link_to 'Back', offers_path %>
+    <p>
+      <strong>Image:</strong>
+      <%= @portfolio.image %>
+    </p>
+
+    <p>
+      <strong>Is employed:</strong>
+      <%= @portfolio.is_employed %>
+    </p>
+
+    <p>
+      <strong>About:</strong>
+      <%= @portfolio.about %>
+    </p>
+
+    <p>
+      <strong>Cv:</strong>
+      <%= @portfolio.cv %>
+    </p>
+
+    <%= link_to 'Edit', edit_portfolio_path(@portfolio) %>
+    |
+    <%= link_to 'Back', offers_path %>
+</div>

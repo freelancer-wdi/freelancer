@@ -1,36 +1,43 @@
-<%= form_with(model: offer, local: true) do |form| %>
-  <% if offer.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(offer.errors.count, "error") %> prohibited this offer from being saved:</h2>
+ <%= render  'projects/navbar_users/navbar_users' %>
 
-      <ul>
-      <% offer.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+ <div class="col-md-12 heading-section"  style="width: 80%; position: relative; left: 20%;" >	
+      <p id="notice"><%= notice %></p> 
+
+    <%= form_with(model: offer, local: true) do |form| %>
+      <% if offer.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(offer.errors.count, "error") %> prohibited this offer from being saved:</h2>
+
+          <ul>
+          <% offer.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <%= form.hidden_field :project_id, value: params[:id] %>
+      <%= form.hidden_field :project_id, value: params[:id] %>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
+      <div class="field">
+        <%= form.label :description %>
+        <%= form.text_area :description %>
+      </div>
 
-  <div class="field">
-    <%= form.label :time %>
-    <%= form.text_field :time %>
-  </div>
+      <div class="field">
+        <%= form.label :time %>
+        <%= form.text_field :time %>
+      </div>
 
-  <div class="field">
-    <%= form.label :budget %>
-    <%= form.text_field :budget %>
-  </div>
+      <div class="field">
+        <%= form.label :budget %>
+        <%= form.text_field :budget %>
+      </div>
 
-  
+      
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+    <% end %>
+    <%= link_to 'Back', offers_path %>
+</div>

@@ -1,37 +1,103 @@
-<%= form_with(model: project, local: true) do |form| %>
-  <% if project.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
+ <%= render  'projects/navbar_users/navbar_users' %>
+<br/>
+<br/>
+<br/>
+<br/>
 
-      <ul>
-      <% project.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+ <div class="col-md-12 heading-section"  style="width: 80%; position: relative;
+  left: 20%; " >	
+
+
+        <%= form_with(model: project, local: true) do |form| %>
+          <% if project.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+              <ul>
+              <% project.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+               <!-- Material form contact -->
+  <div class="card " >
+         <% if  current_page?(new_project_path) %>
+          <h5 class="card-header info-color white-text text-center py-4">
+              <strong>New Project</strong>
+          </h5>
+          <%elsif current_page?(edit_project_path) %>
+          <h5 class="card-header info-color white-text text-center py-4">
+              <strong>Edit Project</strong>
+          </h5>
+         <%end%>
+        <br/>
+        
+
+    <!--Card content-->
+    <div class="card-body px-lg-5 pt-0">
+
+              <!-- Form -->
+              <form class="text-center"  >
+
+
+                    <div class="card-deck">
+
+                    
+
+                      <div class=" col-sm-8">
+                        <%= form.label :name%>
+                        
+                        <%= form.text_field :name, id:"materialContactFormName", class:"form-control" %>
+                      </div>
+
+                      <div class=" col-sm-4">
+                        <%= form.label :budget %>
+                        <%= form.text_field :budget , class:"form-control"%>
+                      </div>
+
+                    </div>
+                    <br/>
+
+                    <div class="md-form">
+                      <%= form.label :requirements %>
+                      <%= form.text_area :requirements, class:"form-control md-textarea" %>
+                    </div>
+                    <br/>
+
+                    <div class="md-form">
+                      <%= form.label :description %>
+                      <%= form.text_area :description, class:"form-control md-textarea" %>
+                    </div>
+                    <br/>
+                  
+
+                  
+
+                    <div class="container-login100-form-btn" style="width:20%; position: relative; left: 80%;" >
+
+                      <% if  current_page?(new_project_path) %>
+                      
+                        <%= form.submit "create project", class:"login100-form-btn" %> 
+                      <% elsif%>
+                         <%= form.submit "update project", class:"login100-form-btn" %> 
+                      <%else%>
+                        <%= form.submit  %> 
+                      <%end%>
+                       
+                      
+                   
+                    </div>
+
+                    <%= link_to 'Back', projects_path  %>
+                </form>
+              <!-- Form -->
+
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
   </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :requirements %>
-    <%= form.text_area :requirements %>
-  </div>
-
-  <div class="field">
-    <%= form.label :budget %>
-    <%= form.text_field :budget %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+<!-- Material form contact -->
+        <% end %>
+      
+</div>
