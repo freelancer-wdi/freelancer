@@ -1,37 +1,57 @@
-<%= form_with(model: portfolio, local: true) do |form| %>
-  <% if portfolio.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(portfolio.errors.count, "error") %> prohibited this portfolio from being saved:</h2>
+<%= render  'projects/navbar_users/navbar_users' %>
+<br/>
 
-      <ul>
-      <% portfolio.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+
+<div class="col-md-12 heading-section"  style="width: 80%; position: relative;
+  left: 20%; " >
+  <h3 style="text-align: center;"> Edit portfolio</h3>
+      <%= form_with(model: portfolio, local: true) do |form| %>
+        <% if portfolio.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(portfolio.errors.count, "error") %> prohibited this portfolio from being saved:</h2>
+
+            <ul>
+            <% portfolio.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div class="card "  >
+         <div class="card-body px-lg-4 pt-0">
+
+              <!-- Form -->
+           <form class="text-center"  >
+              
+
+              <div class="md-form">
+                <%= form.label :about %>
+                <%= form.text_area :about, class:"form-control md-textarea" %>
+              </div>
+              <br/>
+               <div class="card-deck">
+                <div class="col-sm-6">
+                  <%= form.label :image %>
+                  <%= form.text_field :image, class:"form-control md-textarea" %>
+                </div>
+
+                <div class="col-sm-6">
+                  <%= form.label :cv %>
+                  <%= form.text_field :cv, class:"form-control"  %>
+                </div>
+              </div>
+              <br/>
+              <div class="field">
+                <%= form.label :is_employed %>
+                <%= form.check_box :is_employed %>
+              </div>
+
+              <div class="container-login100-form-btn" style="width:20%; position: relative; left: 80%;">
+                <%= form.submit 'update portfolio', class:"login100-form-btn" %>
+               </div>
+            </form>
+            </div>
+
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.text_field :image %>
-  </div>
-
-  <div class="field">
-    <%= form.label :is_employed %>
-    <%= form.check_box :is_employed %>
-  </div>
-
-  <div class="field">
-    <%= form.label :about %>
-    <%= form.text_area :about %>
-  </div>
-
-  <div class="field">
-    <%= form.label :cv %>
-    <%= form.text_field :cv %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

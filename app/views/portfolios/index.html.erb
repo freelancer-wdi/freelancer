@@ -1,35 +1,35 @@
 <%= render  'projects/navbar_users/navbar_users' %>
-<br/>
+<p id="notice"><%= notice %></p>
 
    
-
-
 <div class="col-md-12 heading-section"  style="width: 80%; position: relative;
   left: 20%; " >
 
-    <p id="notice"><%= notice %></p>
-
-    <p>
-      <strong>Image:</strong>
-      <%= @portfolio.image %>
-    </p>
-
-    <p>
-      <strong>Is employed:</strong>
-      <%= @portfolio.is_employed %>
-    </p>
-
-    <p>
-      <strong>About:</strong>
-      <%= @portfolio.about %>
-    </p>
-
-    <p>
-      <strong>Cv:</strong>
-      <%= @portfolio.cv %>
-    </p>
-
-    <%= link_to 'Edit', edit_portfolio_path(@portfolio) %>
-    |
-    <%= link_to 'Back', offers_path %>
+    
+    
+     <div class="card" style="width: 63rem; height: 38rem;">
+          <div class="card-body" >
+            <h5 class="card-title">
+            <%= current_programmer.name%>
+           <img style = "width:20%;   border-radius: 30%; position: relative; left: 70%;" src=<%= @portfolio.image %> /> 
+            </h5>
+              <p class="card-text"> About Me: <%= @portfolio.about %></p>
+          </div>
+              <hr/>
+           <div class="card-body">
+          <h5>expirence : </h5>
+            <p> bla bla bla bla bla blavbla bla bla bla bla bla </p>
+          
+            </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"> employed : <%= @portfolio.is_employed %></li>
+          <li class="list-group-item" ><%=  link_to 'CV',@portfolio.cv, class:"card-link" %></li>
+          
+        </ul>
+       
+      </div>
+      <br/>
+        <%= link_to 'Edit', edit_portfolio_path(@portfolio) %>
+        |
+         <%= link_to 'Back', offers_path %>
 </div>

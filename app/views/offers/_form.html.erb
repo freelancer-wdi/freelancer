@@ -17,27 +17,62 @@
       <% end %>
 
       <%= form.hidden_field :project_id, value: params[:id] %>
+         <div class="card "  >
 
-      <div class="field">
-        <%= form.label :description %>
-        <%= form.text_area :description %>
-      </div>
+             <% if  current_page?(new_offer_path) %>
+              <h5 class="card-header info-color white-text text-center py-4">
+                  <strong>New offer</strong>
+              </h5>
+              <%elsif current_page?(edit_offer_path) %>
+              <h5 class="card-header info-color white-text text-center py-4">
+                  <strong>Edit offer</strong>
+              </h5>
+            <%end%>
+              <br/>
+         <!--Card content-->
+          <div class="card-body px-lg-4 pt-0">
 
-      <div class="field">
-        <%= form.label :time %>
-        <%= form.text_field :time %>
-      </div>
+              <!-- Form -->
+              <form class="text-center"  >
 
-      <div class="field">
-        <%= form.label :budget %>
-        <%= form.text_field :budget %>
-      </div>
 
-      
+                        <div class="card-deck">
 
-      <div class="actions">
-        <%= form.submit %>
+                            <div class="col-sm-6">
+                              <%= form.label :time %>
+                              <%= form.text_field :time, class:"form-control"  %>
+                            </div>
+
+                            <div class="col-sm-6">
+                              <%= form.label :budget %>
+                              <%= form.text_field :budget, class:"form-control" %>
+                            </div>
+                        </div>
+
+                        <div class="md-form">
+                          <%= form.label :description %>
+                          <%= form.text_area :description, class:"form-control md-textarea" %>
+                        </div>
+                        <br/>
+
+                        <div class="container-login100-form-btn" style="width:20%; position: relative; left: 80%;" >
+
+                              <% if  current_page?(new_offer_path) %>
+                              
+                                <%= form.submit "create offer", class:"login100-form-btn" %> 
+                              <% elsif%>
+                                <%= form.submit "update offer", class:"login100-form-btn" %> 
+                              <%else%>
+                                <%= form.submit  %> 
+                              <%end%>  
+                          
+                        </div>
+                            <%= link_to 'Back', offers_path %>
+               </form>
+
+          
+        </div>
       </div>
     <% end %>
-    <%= link_to 'Back', offers_path %>
+    
 </div>

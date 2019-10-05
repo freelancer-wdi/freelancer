@@ -12,7 +12,7 @@
       </div>
       <div class="sidebar-header">
         <div class="user-pic">
-          <img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
+          <img class="img-responsive img-rounded" src="https://ps.is.tuebingen.mpg.de/assets/noEmployeeImage_md-eaa7c21cc21b1943d77e51ab00a5ebe9.png"
             alt="User picture">
         </div>
         <div class="user-info">
@@ -40,14 +40,19 @@
                         <h3><%= render 'customers/nav'%></h3>
                         <% elsif programmer_signed_in? %>
                         <h3><%= render 'programmers/nav'%></h3>
+                        <h3> <%= link_to 'Offers', offers_path%> </h3>
+                        
                         <p class="notice"><%= notice %></p>
                         <p class="alert"><%= alert %></p>
                       <%end%>
             </span>
           </li>
            <li class="header-menu">
-            <span></span>
+            <span>
+
+            </span>
           </li>
+          
         </ul>
       </div>
     </nav>

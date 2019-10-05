@@ -4,51 +4,41 @@
  <div class="col-md-12 heading-section"  style="width: 80%; position: relative; left: 20%;" >	
       <p id="notice"><%= notice %></p> 
 
-        <p id="notice"><%= notice %></p>
 
-        <h3>Project</h3>
-          <p>
-          <strong>Name:</strong>
-          <%= @offer.project.name %>
-        </p>
+        <h3>Project </h3>
+            <div class="card " >
 
-        <p>
-          <strong>Status:</strong>
-          <%= @offer.project.status %>
-        </p>
+              <div class="card-header ">
+                <h5>  client name : <%= @offer.project.customer.username %>  </h5>
+              </div>
 
-        <p>
-          <strong>Description:</strong>
-          <%= @offer.project.description %>
-        </p>
+              <div class=" card-body">
 
-        <p>
-          <strong>Requirements:</strong>
-          <%=  @offer.project.requirements %>
-        </p>
-
-        <p>
-          <strong>Budget:</strong>
-          <%=  @offer.project.budget %>
-        </p>
+                <h6 class="card-title">Name : <%= @offer.project.name %> </h6>
+                <h6 class="card-title"> Status :<%= @offer.project.status %></h6>
+                <h6 class="card-text"> Description :<%= @offer.project.description %></h6>
+                <h6 class="card-title"> Requirements : <%=  @offer.project.requirements %></h6>
+                <h6 class="card-title"> Budget: <%=  @offer.project.budget %></h6>
+                
+              </div>
+            </div>
 
         <hr/>
-        <h3>Offer</h3>
-        <p>
-          <strong>Description:</strong>
-          <%= @offer.description %>
-        </p>
 
-        <p>
-          <strong>Time:</strong>
-          <%= @offer.time %>
-        </p>
 
-        <p>
-          <strong>Budget:</strong>
-          <%= @offer.budget %>
-        </p>
+        <h3>Offer </h3>
 
-        <%= link_to 'Edit', edit_offer_path(@offer) %> |
-        <%= link_to 'Back', offers_path %>
+           <div class="card " >
+               <div class=" card-body">
+
+               <h6 class="card-text">Description : <%= @offer.description %><h6>
+               <h6 class="card-title">Time :  <%= @offer.time %><h6>
+               <h6 class="card-title">Budget: <%= @offer.budget %><h6>
+       
+            </div>
+ 
+          </div>
+          <br/>
+          <%= link_to 'Edit', edit_offer_path(@offer) %>  |
+          <%= link_to 'Back', offers_path %>
 </div>

@@ -1,30 +1,28 @@
-<h1>Project</h1>
-<p>
-  <strong>Name:</strong>
-  <%= @project.name %>
-</p>
+ <%= render  'projects/navbar_users/navbar_users' %>
 
-<p>
-  <strong>Status:</strong>
-  <%= @project.status %>
-</p>
+<br/>
 
-<p>
-  <strong>Description:</strong>
-  <%= @project.description %>
-</p>
+ <div class="col-md-12 heading-section"  style="width: 80%; position: relative;
+  left: 20%; " >	
+    <h3>Project</h3>
+    <div class="card " >
 
-<p>
-  <strong>Requirements:</strong>
-  <%= @project.requirements %>
-</p>
+                     <div class="card-header ">
+                       <h5>  client name: <%= @project.customer.username %>  </h5>
+                      </div>
 
-<p>
-  <strong>Budget:</strong>
-  <%= @project.budget %>
-</p>
-<hr/>
-<h1>New Offer</h1>
-<%= render 'form', offer: @offer %>
+                      <div class=" card-body">
+                        <h6 class="card-title"> project name : <%= @project.name %> </h6>
+                        <h6 class="card-title"> status: <%= @project.status %> </h6>
+                        <h6 class="card-text"> description: <%= @project.description %></h6>
+                        <h6 class="card-title">requirements: <%= @project.requirements %> </h6>
+                        <h6 class="card-title"> budget: <%= @project.budget %></h6>
+                      </div>
+    </div>
+    <hr/>
+    
+    <%= render 'form', offer: @offer %>
 
-<%= link_to 'Back', offers_path %>
+    
+
+</div>

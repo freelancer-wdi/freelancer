@@ -1,11 +1,11 @@
 <% if programmer_signed_in?%>
     <%= link_to 'Sign Out', destroy_programmer_session_path, :method => :delete%>
-    |
+    
     <%= link_to 'Setting', edit_programmer_registration_path%>
-    |
+    
     <%= link_to 'Portfolio', portfolios_path %>
 <%else%>
     <%= link_to 'Sign In', new_programmer_session_path%>
-    |
+    
     <%= link_to 'Sign up', new_programmer_registration_path%>
 <%end%>

@@ -1,77 +1,94 @@
 <%= render  'projects/navbar_users/navbar_users' %>
 
+
 <div class="col-md-12 heading-section"  style="width: 80%; position: relative;
   left: 20%; " >	
-
-<p id="notice"><%= notice %></p>
+     
+        <p class="alert"><%= notice %></p>
+      
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+             <div class="collapse navbar-collapse" id="navbarNav">
+                 <ul class="navbar-nav">
+                    <li class="nav-item ">
+                     <button class="nav-link" onclick="toggleOne()">Offers </button> 
+                    </li>
+                    <li class="nav-item ">
+                       <button class="nav-link" onclick="toggleTwo()">Projects</button>
+                    </li>
+                   </ul>
+              </div>
+           </nav>
+            <br/>
+          
 
           
-          <button onclick="toggleOne()">Offers</button> |
-          <button onclick="toggleTwo()">Projects</button>
+          
           <div id="offers">
-            <h1>Offers</h1>
-              
-              <table>
-                <thead>
-                  <tr>
-                    <th>Description</th>
-                    <th>Time</th>
-                    <th>Budget</th>
-                    <th colspan="3"></th>
-                  </tr>
-                </thead>
+              <h3>Offers : </h3>
 
-                <tbody>
                   <% @offers.each do |offer| %>
-                    <tr>
-                      <td><%= offer.description %></td>
-                      <td><%= offer.time %></td>
-                      <td><%= offer.budget %></td>
-                      <td><%= link_to 'Show', offer %></td>
-                      <td><%= link_to 'Edit', edit_offer_path(offer) %></td>
-                      <td><%= link_to 'Destroy', offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                    </tr>
+                    <div class="card  " >
+                      <div class=" card-body">
+                       
+                          <h5 class="card-text"> description: <%= offer.description %></h5>
+                          <h5 class="card-title"> time:   <%= offer.time %></h5>
+                          <h5 class="card-title"> budget:   <%= offer.budget %></h5>
+                          
+
+                          
+                        </tr>
+                          <div class="card-footer text-right">
+                            <%= link_to 'Show', offer ,  class:"btn btn-primary"%>
+                            <%= link_to 'Edit', edit_offer_path(offer),  class:"btn btn-primary" %>
+                            <%= link_to 'Destroy', offer, method: :delete, data: { confirm: 'Are you sure?' },class:"btn btn-danger"  %>
+                       </div> 
+                      </div>
+
+                     
+                    </div>
+                    <br/>
                   <% end %>
-                </tbody>
-              </table>
+
+                
+             
           </div>
 
 
 
-          <div id="projects" style="display:none;">
-          <p id="notice"><%= notice %></p>
+           <div id="projects" style="display:none;">
+           <p id="notice"><%= notice %></p>
 
-          <h1>Projects</h1>
+           <h3>Projects : </h3>
 
-          <table>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Status</th>
-                <th>Description</th>
-                <th>Requirements</th>
-                <th>Budget</th>
-                <th colspan="2"></th>
-              </tr>
-            </thead>
+          
 
-            <tbody>
+            
               <% @projects.each do |project| %>
-                <tr>
-                  <td><%= project.name %></td>
-                  <td><%= project.status %></td>
-                  <td><%= project.description %></td>
-                  <td><%= project.requirements %></td>
-                  <td><%= project.budget %></td>
-                  <td><%= link_to 'Create Offer', new_offer_path(project) %></td>
-                </tr>
+                <div class="card " >
+
+                     <div class="card-header ">
+                       <h5>  client name: <%= project.customer.username %>  </h5>
+                      </div>
+
+                      <div class=" card-body">
+                        <h6 class="card-title"> project name : <%= project.name %> </h6>
+                        <h6 class="card-title"> status: <%= project.status %> </h6>
+                        <h6 class="card-text"> description: <%= project.description %></h6>
+                        <h6 class="card-title">requirements: <%= project.requirements %> </h6>
+                        <h6 class="card-title"> budget: <%= project.budget %></h6>
+                      
+                        <div style="max-width: 20%;  position: relative; left: 80%;">  
+                          <%= link_to 'Create Offer', new_offer_path(project) , class:"login100-form-btn" %>
+                        </div>
+                      </div>
+                    
+                </div>
+                <br/>
               <% end %>
-            </tbody>
-          </table>
-
-          <br>
-
+              
           </div>
+         
+         
           <script>
           function toggleOne(){
             document.getElementById("projects").style.display = "none"
