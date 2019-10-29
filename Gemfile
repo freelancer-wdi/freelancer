@@ -65,5 +65,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # https://github.com/plataformatec/devise#getting-started
 gem 'devise'
 
+# Administrate
+# https://github.com/thoughtbot/administrate
+gem "administrate"
+
 #jquery
 gem 'jquery-rails'
