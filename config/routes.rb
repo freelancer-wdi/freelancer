@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :software_engineerings
   root "home#index"
 
 
