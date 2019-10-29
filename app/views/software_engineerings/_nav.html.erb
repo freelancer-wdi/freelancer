@@ -1,0 +1,9 @@
+<% if software_engineering_signed_in?%>
+    <%= link_to 'Sign Out', destroy_software_engineering_session_path, :method => :delete%>
+    
+    <%= link_to 'Setting', edit_software_engineering_registration_path%>
+<%else%>
+    <%= link_to 'Sign In', new_software_engineering_session_path%>
+    
+    <%= link_to 'Sign up', new_software_engineering_registration_path%>
+<%end%>

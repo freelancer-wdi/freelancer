@@ -11,9 +11,9 @@
   </head>
 
   <body>
-       
-
-    <% if customer_signed_in? %>
+    <% if software_engineering_signed_in? %>
+      <h3><% render 'software_engineerings/nav'%></h3>
+    <% elsif customer_signed_in? %>
       <h3><% render 'customers/nav'%></h3>
     <% elsif programmer_signed_in? %>
       <h3><% render 'programmers/nav'%></h3>
@@ -21,8 +21,6 @@
     <p class="alert"><% alert %></p>
     <%end%>
     
-       
-
     <%= yield %>
     
   </body>
