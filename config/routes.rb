@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :software_engineerings
+  # devise_for :software_engineerings
   root "home#index"
 
 
@@ -24,5 +24,9 @@ Rails.application.routes.draw do
   devise_for :customers, controllers: { registrations: 'customers/registrations',
                                      sessions: 'customers/sessions', unlocks: 'customers/unlocks',
                                      passwords: 'customers/passwords', confirmations: 'customers/confirmations'}
+
+  devise_for :software_engineerings, controllers: { registrations: 'software_engineerings/registrations',
+                                          sessions: 'software_engineerings/sessions', unlocks: 'software_engineerings/unlocks',
+                                          passwords: 'software_engineerings/passwords', confirmations: 'software_engineerings/confirmations'}
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
