@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+      resources :programmers
+      resources :customers
+      resources :software_engineerings
+      resources :offers
+      resources :portfolios
+      resources :projects
+
+      root to: "programmers#index"
+    end
   # devise_for :software_engineerings
   root "home#index"
 
